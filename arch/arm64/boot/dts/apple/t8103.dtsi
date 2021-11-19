@@ -143,6 +143,7 @@
 			apple,npins = <212>;
 
 			interrupt-controller;
+			#interrupt-cells = <2>;
 			interrupt-parent = <&aic>;
 			interrupts = <AIC_IRQ 190 IRQ_TYPE_LEVEL_HIGH>,
 				     <AIC_IRQ 191 IRQ_TYPE_LEVEL_HIGH>,
@@ -169,6 +170,7 @@
 			apple,npins = <42>;
 
 			interrupt-controller;
+			#interrupt-cells = <2>;
 			interrupt-parent = <&aic>;
 			interrupts = <AIC_IRQ 268 IRQ_TYPE_LEVEL_HIGH>,
 				     <AIC_IRQ 269 IRQ_TYPE_LEVEL_HIGH>,
@@ -189,6 +191,7 @@
 			apple,npins = <23>;
 
 			interrupt-controller;
+			#interrupt-cells = <2>;
 			interrupt-parent = <&aic>;
 			interrupts = <AIC_IRQ 330 IRQ_TYPE_LEVEL_HIGH>,
 				     <AIC_IRQ 331 IRQ_TYPE_LEVEL_HIGH>,
@@ -209,6 +212,7 @@
 			apple,npins = <16>;
 
 			interrupt-controller;
+			#interrupt-cells = <2>;
 			interrupt-parent = <&aic>;
 			interrupts = <AIC_IRQ 391 IRQ_TYPE_LEVEL_HIGH>,
 				     <AIC_IRQ 392 IRQ_TYPE_LEVEL_HIGH>,
@@ -233,6 +237,7 @@
 			#iommu-cells = <1>;
 			interrupt-parent = <&aic>;
 			interrupts = <AIC_IRQ 699 IRQ_TYPE_LEVEL_HIGH>;
+			status = "disabled";
 		};
 
 		pcie0_dart_2: dart@683008000 {
@@ -241,6 +246,7 @@
 			#iommu-cells = <1>;
 			interrupt-parent = <&aic>;
 			interrupts = <AIC_IRQ 702 IRQ_TYPE_LEVEL_HIGH>;
+			status = "disabled";
 		};
 
 		pcie0: pcie@690000000 {
@@ -336,6 +342,25 @@
 						<0 0 0 2 &port02 0 0 0 1>,
 						<0 0 0 3 &port02 0 0 0 2>,
 						<0 0 0 4 &port02 0 0 0 3>;
+			};
+		};
+
+		spi3: spi@23510c000 {
+			compatible = "apple,spi-mc-m1";
+			reg = <0x2 0x3510c000 0x0 0x4000>;
+			interrupt-parent = <&aic>;
+			interrupts = <AIC_IRQ 617 IRQ_TYPE_LEVEL_HIGH>;
+			clocks = <&clk24>;
+			cs-gpios = <&pinctrl_ap 49 0>;
+			#address-cells = <1>;
+			#size-cells = <0>;
+
+			keyboard@0 {
+				compatible = "input,applespi-kbd-v1";
+				reg = <0>;
+				spi-max-frequency = <2000000>;
+				spien-gpios = <&pinctrl_ap 195 0>;
+				interrupts-extended = <&pinctrl_nub 13 IRQ_TYPE_LEVEL_LOW>;
 			};
 		};
 	};
