@@ -1,0 +1,34 @@
+--- arch/arm64/boot/dts/apple/t8103.dtsi
++++ arch/arm64/boot/dts/apple/t8103.dtsi
+@@ -206,6 +206,7 @@ pinctrl_ap: pinctrl@23c100000 {
+ 			apple,npins = <212>;
+ 
+ 			interrupt-controller;
++			#interrupt-cells = <2>;
+ 			interrupt-parent = <&aic>;
+ 			interrupts = <AIC_IRQ 190 IRQ_TYPE_LEVEL_HIGH>,
+ 				     <AIC_IRQ 191 IRQ_TYPE_LEVEL_HIGH>,
+@@ -237,6 +238,7 @@ pinctrl_aop: pinctrl@24a820000 {
+ 			apple,npins = <42>;
+ 
+ 			interrupt-controller;
++			#interrupt-cells = <2>;
+ 			interrupt-parent = <&aic>;
+ 			interrupts = <AIC_IRQ 268 IRQ_TYPE_LEVEL_HIGH>,
+ 				     <AIC_IRQ 269 IRQ_TYPE_LEVEL_HIGH>,
+@@ -257,6 +259,7 @@ pinctrl_nub: pinctrl@23d1f0000 {
+ 			apple,npins = <23>;
+ 
+ 			interrupt-controller;
++			#interrupt-cells = <2>;
+ 			interrupt-parent = <&aic>;
+ 			interrupts = <AIC_IRQ 330 IRQ_TYPE_LEVEL_HIGH>,
+ 				     <AIC_IRQ 331 IRQ_TYPE_LEVEL_HIGH>,
+@@ -285,6 +288,7 @@ pinctrl_smc: pinctrl@23e820000 {
+ 			apple,npins = <16>;
+ 
+ 			interrupt-controller;
++			#interrupt-cells = <2>;
+ 			interrupt-parent = <&aic>;
+ 			interrupts = <AIC_IRQ 391 IRQ_TYPE_LEVEL_HIGH>,
+ 				     <AIC_IRQ 392 IRQ_TYPE_LEVEL_HIGH>,
